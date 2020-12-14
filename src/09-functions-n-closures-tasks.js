@@ -45,9 +45,7 @@ function getComposition(f, g) {
  *
  */
 function getPowerFunction(exponent) {
-  return function (number) {
-    return number ** exponent;
-  };
+  return (number) => number ** exponent;
 }
 
 
@@ -85,7 +83,7 @@ function getPolynom() {
  */
 function memoize(func) {
   const cache = {};
-  return function (...args) {
+  return function inner(...args) {
     const key = JSON.stringify(args);
     if (!(key in cache)) {
       cache[key] = func(...args);
@@ -158,7 +156,7 @@ function logger(/* func, logFunc */) {
  */
 function partialUsingArguments(fn, ...args1) {
   const args = [...args1];
-  return function (...a) {
+  return function inner(...a) {
     const remainingArgs = a;
     return fn.apply(this, args.concat(remainingArgs));
   };
@@ -184,7 +182,7 @@ function partialUsingArguments(fn, ...args1) {
  */
 function getIdGeneratorFunction(startFrom) {
   const index = startFrom;
-  return function () {
+  return function inner() {
     return index + 1;
   };
 }
