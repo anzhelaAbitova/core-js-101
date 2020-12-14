@@ -180,11 +180,8 @@ function partialUsingArguments(fn, ...args1) {
  *   getId4() => 7
  *   getId10() => 11
  */
-function getIdGeneratorFunction(startFrom) {
-  const index = startFrom;
-  return function inner() {
-    return index + 1;
-  };
+function getIdGeneratorFunction(/* startFrom */) {
+  throw new Error('Not implemented');
 }
 
 
